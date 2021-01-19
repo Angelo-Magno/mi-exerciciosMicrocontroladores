@@ -1,0 +1,346 @@
+CCS PCM C Compiler, Version 4.104, 5967               29-nov-17 10:59
+
+               Filename: C:\Users\Estudo\Desktop\6 Periodo\Microcontroladores\Part 2\Exercicio C2\Ex15\Ex15.lst
+
+               ROM used: 239 words (3%)
+                         Largest free fragment is 2048
+               RAM used: 15 (4%) at main() level
+                         16 (4%) worst case
+               Stack:    1 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   019
+0003:  NOP
+.................... #include <16f877a.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #use delay (crystal = 4Mhz)//Definição de frequência do cristal 
+0004:  MOVLW  2B
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  4A
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETURN
+....................  
+.................... #fuses xt, nowdt, NOPROTECT, nobrownout, put//Fusebits 
+.................... #byte PORTB = 0x06 //Acessa o endreço 06h do portb 
+.................... #byte PORTD = 0x08 
+....................  
+.................... #bit LED1 = PORTD.0 
+.................... #bit LED2 = PORTD.1 
+.................... #bit LED3 = PORTD.2 
+.................... #bit LED4 = PORTD.3 
+.................... #bit LED5 = PORTD.4 
+.................... #bit LED6 = PORTD.5 
+.................... #bit LED7 = PORTD.6 
+....................  
+.................... #zero_ram 
+.................... main(){	 
+0019:  MOVF   03,W
+001A:  ANDLW  1F
+001B:  MOVWF  03
+001C:  MOVLW  57
+001D:  MOVWF  77
+001E:  MOVLW  20
+001F:  MOVWF  04
+0020:  BCF    03.7
+0021:  CLRF   00
+0022:  INCF   04,F
+0023:  DECFSZ 77,F
+0024:  GOTO   021
+0025:  CLRF   78
+0026:  CLRF   79
+0027:  CLRF   7A
+0028:  CLRF   7B
+0029:  CLRF   7C
+002A:  CLRF   7D
+002B:  CLRF   7E
+002C:  MOVLW  50
+002D:  MOVWF  77
+002E:  MOVLW  A0
+002F:  MOVWF  04
+0030:  BCF    03.7
+0031:  CLRF   00
+0032:  INCF   04,F
+0033:  DECFSZ 77,F
+0034:  GOTO   031
+0035:  MOVLW  60
+0036:  MOVWF  77
+0037:  MOVLW  10
+0038:  MOVWF  04
+0039:  BSF    03.7
+003A:  CLRF   00
+003B:  INCF   04,F
+003C:  DECFSZ 77,F
+003D:  GOTO   03A
+003E:  BCF    03.7
+003F:  MOVLW  60
+0040:  MOVWF  77
+0041:  MOVLW  90
+0042:  MOVWF  04
+0043:  BSF    03.7
+0044:  CLRF   00
+0045:  INCF   04,F
+0046:  DECFSZ 77,F
+0047:  GOTO   044
+0048:  BCF    03.7
+0049:  CLRF   20
+004A:  CLRF   04
+004B:  BCF    03.7
+004C:  MOVLW  1F
+004D:  ANDWF  03,F
+004E:  BSF    03.5
+004F:  BSF    1F.0
+0050:  BSF    1F.1
+0051:  BSF    1F.2
+0052:  BCF    1F.3
+0053:  MOVLW  07
+0054:  MOVWF  1C
+0055:  MOVLW  BF
+0056:  BCF    03.5
+0057:  MOVWF  21
+0058:  MOVLW  06
+0059:  MOVWF  22
+005A:  MOVLW  5B
+005B:  MOVWF  23
+005C:  MOVLW  4F
+005D:  MOVWF  24
+005E:  MOVLW  66
+005F:  MOVWF  25
+0060:  MOVLW  6D
+0061:  MOVWF  26
+0062:  MOVLW  7D
+0063:  MOVWF  27
+0064:  MOVLW  07
+0065:  MOVWF  28
+0066:  MOVLW  FF
+0067:  MOVWF  29
+0068:  MOVLW  6F
+0069:  MOVWF  2A
+.................... 	int zero = 0B10111111; 
+.................... 	int	um = 0B00000110; 
+.................... 	int	dois = 0B01011011; 
+.................... 	int	tres = 0B01001111; 
+.................... 	int	quatro = 0B01100110; 
+.................... 	int	cinco = 0B01101101; 
+.................... 	int	seis = 0B01111101; 
+.................... 	int	sete = 0B00000111; 
+.................... 	int	oito = 0B11111111; 
+.................... 	int	nove = 0B01101111; 
+....................  
+.................... 	set_tris_b(0b00000000); 
+006A:  MOVLW  00
+006B:  BSF    03.5
+006C:  MOVWF  06
+.................... 	set_tris_d(0b00000000); 
+006D:  MOVWF  08
+.................... 	while(1){ 
+.................... 		 
+.................... 		PORTD= zero; 
+006E:  BCF    03.5
+006F:  MOVF   21,W
+0070:  MOVWF  08
+.................... 		PORTB= 0B00000010; 
+0071:  MOVLW  02
+0072:  MOVWF  06
+.................... 		delay_ms(100); 
+0073:  MOVLW  64
+0074:  MOVWF  2B
+0075:  CALL   004
+.................... 		PORTD= zero; 
+0076:  MOVF   21,W
+0077:  MOVWF  08
+.................... 		PORTB= 0B00000001; 
+0078:  MOVLW  01
+0079:  MOVWF  06
+.................... 		delay_ms(100); 
+007A:  MOVLW  64
+007B:  MOVWF  2B
+007C:  CALL   004
+.................... 		PORTD= zero; 
+007D:  MOVF   21,W
+007E:  MOVWF  08
+.................... 		PORTB= 0B00000010; 
+007F:  MOVLW  02
+0080:  MOVWF  06
+.................... 		delay_ms(100); 
+0081:  MOVLW  64
+0082:  MOVWF  2B
+0083:  CALL   004
+.................... 		PORTD= um; 
+0084:  MOVF   22,W
+0085:  MOVWF  08
+.................... 		PORTB= 0B00000001; 
+0086:  MOVLW  01
+0087:  MOVWF  06
+.................... 		delay_ms(100); 
+0088:  MOVLW  64
+0089:  MOVWF  2B
+008A:  CALL   004
+.................... 		PORTD= zero; 
+008B:  MOVF   21,W
+008C:  MOVWF  08
+.................... 		PORTB= 0B00000010; 
+008D:  MOVLW  02
+008E:  MOVWF  06
+.................... 		delay_ms(100); 
+008F:  MOVLW  64
+0090:  MOVWF  2B
+0091:  CALL   004
+.................... 		PORTD= dois; 
+0092:  MOVF   23,W
+0093:  MOVWF  08
+.................... 		PORTB= 0B00000001; 
+0094:  MOVLW  01
+0095:  MOVWF  06
+.................... 		delay_ms(100); 
+0096:  MOVLW  64
+0097:  MOVWF  2B
+0098:  CALL   004
+.................... 		PORTD= zero; 
+0099:  MOVF   21,W
+009A:  MOVWF  08
+.................... 		PORTB= 0B00000010; 
+009B:  MOVLW  02
+009C:  MOVWF  06
+.................... 		delay_ms(100); 
+009D:  MOVLW  64
+009E:  MOVWF  2B
+009F:  CALL   004
+.................... 		PORTD= tres; 
+00A0:  MOVF   24,W
+00A1:  MOVWF  08
+.................... 		PORTB= 0B00000001; 
+00A2:  MOVLW  01
+00A3:  MOVWF  06
+.................... 		delay_ms(100); 
+00A4:  MOVLW  64
+00A5:  MOVWF  2B
+00A6:  CALL   004
+.................... 		PORTD= zero; 
+00A7:  MOVF   21,W
+00A8:  MOVWF  08
+.................... 		PORTB= 0B00000010; 
+00A9:  MOVLW  02
+00AA:  MOVWF  06
+.................... 		delay_ms(100); 
+00AB:  MOVLW  64
+00AC:  MOVWF  2B
+00AD:  CALL   004
+.................... 		PORTD= quatro; 
+00AE:  MOVF   25,W
+00AF:  MOVWF  08
+.................... 		PORTB= 0B00000001; 
+00B0:  MOVLW  01
+00B1:  MOVWF  06
+.................... 		delay_ms(100); 
+00B2:  MOVLW  64
+00B3:  MOVWF  2B
+00B4:  CALL   004
+.................... 		PORTD= zero; 
+00B5:  MOVF   21,W
+00B6:  MOVWF  08
+.................... 		PORTB= 0B00000010; 
+00B7:  MOVLW  02
+00B8:  MOVWF  06
+.................... 		delay_ms(100); 
+00B9:  MOVLW  64
+00BA:  MOVWF  2B
+00BB:  CALL   004
+.................... 		PORTD= cinco; 
+00BC:  MOVF   26,W
+00BD:  MOVWF  08
+.................... 		PORTB= 0B00000001; 
+00BE:  MOVLW  01
+00BF:  MOVWF  06
+.................... 		delay_ms(100); 
+00C0:  MOVLW  64
+00C1:  MOVWF  2B
+00C2:  CALL   004
+.................... 		PORTD= zero; 
+00C3:  MOVF   21,W
+00C4:  MOVWF  08
+.................... 		PORTB= 0B00000010; 
+00C5:  MOVLW  02
+00C6:  MOVWF  06
+.................... 		delay_ms(100); 
+00C7:  MOVLW  64
+00C8:  MOVWF  2B
+00C9:  CALL   004
+.................... 		PORTD= seis; 
+00CA:  MOVF   27,W
+00CB:  MOVWF  08
+.................... 		PORTB= 0B00000001; 
+00CC:  MOVLW  01
+00CD:  MOVWF  06
+.................... 		delay_ms(100); 
+00CE:  MOVLW  64
+00CF:  MOVWF  2B
+00D0:  CALL   004
+.................... 		PORTD= zero; 
+00D1:  MOVF   21,W
+00D2:  MOVWF  08
+.................... 		PORTB= 0B00000010; 
+00D3:  MOVLW  02
+00D4:  MOVWF  06
+.................... 		delay_ms(100); 
+00D5:  MOVLW  64
+00D6:  MOVWF  2B
+00D7:  CALL   004
+.................... 		PORTD= sete; 
+00D8:  MOVF   28,W
+00D9:  MOVWF  08
+.................... 		PORTB= 0B00000001; 
+00DA:  MOVLW  01
+00DB:  MOVWF  06
+.................... 		delay_ms(100); 
+00DC:  MOVLW  64
+00DD:  MOVWF  2B
+00DE:  CALL   004
+.................... 		PORTD= zero; 
+00DF:  MOVF   21,W
+00E0:  MOVWF  08
+.................... 		PORTB= 0B00000010; 
+00E1:  MOVLW  02
+00E2:  MOVWF  06
+.................... 		delay_ms(100); 
+00E3:  MOVLW  64
+00E4:  MOVWF  2B
+00E5:  CALL   004
+.................... 		PORTD= oito; 
+00E6:  MOVF   29,W
+00E7:  MOVWF  08
+.................... 		PORTB= 0B00000001; 
+00E8:  MOVLW  01
+00E9:  MOVWF  06
+.................... 		delay_ms(100); 
+00EA:  MOVLW  64
+00EB:  MOVWF  2B
+00EC:  CALL   004
+.................... 	} 
+00ED:  GOTO   06F
+....................  
+.................... } 
+00EE:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F31   XT NOWDT PUT NODEBUG NOPROTECT NOBROWNOUT NOLVP NOCPD NOWRT

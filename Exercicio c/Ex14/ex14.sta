@@ -1,0 +1,46 @@
+
+ROM used: 142 (2%)
+          142 (2%) including unused fragments
+
+          0 Average locations per line
+          7 Average locations per statement
+
+RAM used: 8 (2%) at main() level
+          9 (3%) worst case
+
+Stack used: 1 worst case (out of 7 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   30    21 100  ex14.c
+  326     0   0  ..\..\..\..\..\Program Files (x86)\PICC\devices\16f877a.h
+----- -----
+  356    21 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     13   9   1             @delay_ms1
+0    125  88   0   472  3.8  main
+
+Program metrics:
+    Functions               1
+    Statements              21
+    Comments                75
+    Volume (V)              475
+    Difficilty (D)          3.7
+    Effort to implement (E) 1756
+    Time to implement (T)   2 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    127
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-007FF   138  1906  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01EFF     0  1792  
+
+
+

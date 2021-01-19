@@ -1,0 +1,122 @@
+CCS PCM C Compiler, Version 4.104, 5967               11-out-17 21:20
+
+               Filename: C:\Users\aluno\Desktop\Microcontroladores\Exercicio c\Ex01\ex01.lst
+
+               ROM used: 65 words (3%)
+                         Largest free fragment is 1983
+               RAM used: 6 (3%) at main() level
+                         7 (3%) worst case
+               Stack:    1 locations
+
+*
+0000:  NOP
+0001:  MOVLW  00
+0002:  MOVWF  0A
+0003:  GOTO   019
+.................... #include <16f628a.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+.................... #list 
+....................  
+.................... #use delay (crystal = 4Mhz)//Definição de frequência do cristal 
+0004:  MOVLW  22
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  4A
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETURN
+....................  
+.................... #fuses xt, nowdt, NOPROTECT, nobrownout, put//Fusebits 
+.................... #byte PORTB = 0x06 //Acessa o endreço 06h do portb 
+.................... #bit LED = PORTB.0  //Acessa o pino B0 
+.................... #bit LED1 = PORTB.1  
+.................... #bit LED2 = PORTB.2 
+.................... #bit LED3 = PORTB.3 
+.................... #bit LED4 = PORTB.4 
+.................... #bit LED5 = PORTB.5 
+.................... #bit LED6 = PORTB.6 
+.................... #bit LED7 = PORTB.7 
+.................... main(){ 
+0019:  CLRF   04
+001A:  BCF    03.7
+001B:  MOVLW  1F
+001C:  ANDWF  03,F
+001D:  MOVLW  07
+001E:  MOVWF  1F
+.................... 	set_tris_b(0b0000000);//0xFE 
+001F:  MOVLW  00
+0020:  TRIS   6
+.................... 	while(1){ 
+.................... 		LED = 1; 
+0021:  BSF    06.0
+.................... 		LED1 = 1; 
+0022:  BSF    06.1
+.................... 		LED2 = 1; 
+0023:  BSF    06.2
+.................... 		LED3 = 1; 
+0024:  BSF    06.3
+.................... 		LED4 = 0; 
+0025:  BCF    06.4
+.................... 		LED5 = 0; 
+0026:  BCF    06.5
+.................... 		LED6 = 0; 
+0027:  BCF    06.6
+.................... 		LED7 = 0; 
+0028:  BCF    06.7
+.................... 		delay_ms(500); 
+0029:  MOVLW  02
+002A:  MOVWF  21
+002B:  MOVLW  FA
+002C:  MOVWF  22
+002D:  CALL   004
+002E:  DECFSZ 21,F
+002F:  GOTO   02B
+.................... 		LED = 0; 
+0030:  BCF    06.0
+.................... 		LED1 = 0; 
+0031:  BCF    06.1
+.................... 		LED2 = 0; 
+0032:  BCF    06.2
+.................... 		LED3 = 0; 
+0033:  BCF    06.3
+.................... 		LED4 = 1; 
+0034:  BSF    06.4
+.................... 		LED5 = 1; 
+0035:  BSF    06.5
+.................... 		LED6 = 1; 
+0036:  BSF    06.6
+.................... 		LED7 = 1; 
+0037:  BSF    06.7
+.................... 		delay_ms(500); 
+0038:  MOVLW  02
+0039:  MOVWF  21
+003A:  MOVLW  FA
+003B:  MOVWF  22
+003C:  CALL   004
+003D:  DECFSZ 21,F
+003E:  GOTO   03A
+.................... 	 
+.................... 	}	 
+003F:  GOTO   021
+....................  
+....................  
+.................... } 
+0040:  GOTO   040
+
+Configuration Fuses:
+   Word  1: 3F09   XT NOWDT NOPUT NOPROTECT NOBROWNOUT NOMCLR NOLVP NOCPD

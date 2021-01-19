@@ -1,0 +1,4 @@
+>>> Warning 203 "ex03.c" Line 11(1,1): Condition always TRUE
+>>> Warning 208 "ex03.c" Line 8(1,5): Function not void and does not return a value  main
+      Memory usage:   ROM=1%      RAM=3% - 3%
+      0 Errors,  2 Warnings.

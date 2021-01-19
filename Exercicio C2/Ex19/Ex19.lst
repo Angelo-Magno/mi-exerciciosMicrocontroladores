@@ -1,0 +1,112 @@
+CCS PCM C Compiler, Version 4.104, 5967               29-nov-17 15:48
+
+               Filename: C:\Users\Estudo\Desktop\6 Periodo\Microcontroladores\Part 2\Exercicio C2\Ex19\Ex19.lst
+
+               ROM used: 63 words (1%)
+                         Largest free fragment is 2048
+               RAM used: 7 (2%) at main() level
+                         8 (2%) worst case
+               Stack:    0 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   004
+0003:  NOP
+.................... #include <16f877a.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #use delay(crystal = 4MHz) 
+.................... #fuses xt, nowdt 
+....................  
+.................... #byte  portc=0x07 
+.................... #byte  portd=0x08 
+....................  
+.................... #bit s1=portc.0 
+.................... #bit s2=portc.1 
+.................... #bit s3=portc.2 
+....................  
+.................... #bit m=portd.0 
+.................... #bit eb=portd.1 
+.................... #bit ec=portd.2 
+....................  
+.................... main(){ 
+*
+0004:  CLRF   04
+0005:  BCF    03.7
+0006:  MOVLW  1F
+0007:  ANDWF  03,F
+0008:  BSF    03.5
+0009:  BSF    1F.0
+000A:  BSF    1F.1
+000B:  BSF    1F.2
+000C:  BCF    1F.3
+000D:  MOVLW  07
+000E:  MOVWF  1C
+.................... 	set_tris_c(0b00000111); 
+*
+0012:  MOVLW  07
+0013:  BSF    03.5
+0014:  MOVWF  07
+0015:  BCF    03.5
+0016:  MOVWF  20
+.................... 	set_tris_d(0b11111000); 
+0017:  MOVLW  F8
+0018:  BSF    03.5
+0019:  MOVWF  08
+.................... 	int8 estado=0; 
+001A:  BCF    03.5
+001B:  CLRF   21
+.................... 	m=0;eb=0;ec=0;	 
+001C:  BCF    08.0
+001D:  BCF    08.1
+001E:  BCF    08.2
+.................... 	while(1){ 
+.................... 		switch(estado){ 
+001F:  MOVF   21,W
+0020:  BTFSC  03.2
+0021:  GOTO   029
+0022:  XORLW  01
+0023:  BTFSC  03.2
+0024:  GOTO   030
+0025:  XORLW  03
+0026:  BTFSC  03.2
+0027:  GOTO   037
+0028:  GOTO   03D
+.................... 			case 0:	m=1; if(s1==1){m=0;estado=1;}  
+0029:  BSF    08.0
+002A:  BTFSS  07.0
+002B:  GOTO   02F
+002C:  BCF    08.0
+002D:  MOVLW  01
+002E:  MOVWF  21
+.................... 			break; 
+002F:  GOTO   03D
+.................... 			case 1:  eb=1; if(s2==1){eb=0;estado=2;}  
+0030:  BSF    08.1
+0031:  BTFSS  07.1
+0032:  GOTO   036
+0033:  BCF    08.1
+0034:  MOVLW  02
+0035:  MOVWF  21
+.................... 			break; 
+0036:  GOTO   03D
+.................... 			case 2: ec=1; if(s3==1){ec=0;estado=0;}  
+0037:  BSF    08.2
+0038:  BTFSS  07.2
+0039:  GOTO   03C
+003A:  BCF    08.2
+003B:  CLRF   21
+.................... 			break; 
+003C:  GOTO   03D
+.................... 			 
+.................... 		} 
+.................... 	} 
+003D:  GOTO   01F
+.................... } 
+003E:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F71   XT NOWDT PUT NODEBUG NOPROTECT BROWNOUT NOLVP NOCPD NOWRT

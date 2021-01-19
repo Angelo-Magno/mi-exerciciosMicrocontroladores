@@ -1,0 +1,72 @@
+CCS PCM C Compiler, Version 4.104, 5967               25-out-17 21:27
+
+               Filename: C:\Users\aluno\Desktop\Microcontroladores\Exercicio c\Ex05\ex05.lst
+
+               ROM used: 28 words (1%)
+                         Largest free fragment is 2020
+               RAM used: 7 (3%) at main() level
+                         7 (3%) worst case
+               Stack:    0 locations
+
+*
+0000:  NOP
+0001:  MOVLW  00
+0002:  MOVWF  0A
+0003:  GOTO   004
+.................... #include <16f628a.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+.................... #list 
+....................  
+.................... #use delay (crystal = 4mhz) 
+.................... #fuses xt, nowdt, noprotect, nobrownout, put 
+.................... #byte portb = 0x06 
+.................... #byte porta = 0x05 
+.................... #bit botao = porta.0 
+.................... #bit botao1 = porta.1 
+.................... #bit led = portb.0 
+.................... #bit led1 = portb.1 
+.................... main(){ 
+0004:  CLRF   04
+0005:  BCF    03.7
+0006:  MOVLW  1F
+0007:  ANDWF  03,F
+0008:  MOVLW  07
+0009:  MOVWF  1F
+.................... 	set_tris_a(0b11111100); 
+000A:  MOVLW  FC
+000B:  TRIS   5
+.................... 	set_tris_b(0b11111100); 
+000C:  TRIS   6
+.................... 	while(1){ 
+.................... 		if(botao==1){ 
+000D:  BTFSS  05.0
+000E:  GOTO   010
+.................... 			led = 1; 
+000F:  BSF    06.0
+.................... 		} 
+.................... 		if(botao1==1){ 
+0010:  BTFSS  05.1
+0011:  GOTO   013
+.................... 			led1 = 1; 
+0012:  BSF    06.1
+.................... 		} 
+.................... 		while(botao==0 && botao1==0){ 
+0013:  BTFSC  05.0
+0014:  GOTO   01A
+0015:  BTFSC  05.1
+0016:  GOTO   01A
+.................... 			led = 0; 
+0017:  BCF    06.0
+.................... 			led1 = 0; 
+0018:  BCF    06.1
+.................... 		} 
+0019:  GOTO   013
+.................... 	} 
+001A:  GOTO   00D
+....................  
+.................... } 
+001B:  GOTO   01B
+
+Configuration Fuses:
+   Word  1: 3F09   XT NOWDT NOPUT NOPROTECT NOBROWNOUT NOMCLR NOLVP NOCPD

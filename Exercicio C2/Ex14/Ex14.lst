@@ -1,0 +1,154 @@
+CCS PCM C Compiler, Version 4.104, 5967               29-nov-17 10:02
+
+               Filename: C:\Users\Estudo\Desktop\6 Periodo\Microcontroladores\Part 2\Exercicio C2\Ex14\Ex14.lst
+
+               ROM used: 97 words (1%)
+                         Largest free fragment is 2048
+               RAM used: 6 (2%) at main() level
+                         9 (2%) worst case
+               Stack:    1 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   019
+0003:  NOP
+.................... #include <16f877a.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #use delay (crystal= 4Mhz) 
+0004:  MOVLW  24
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  4A
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETURN
+.................... #fuses xt, nowdt, noprotect, put 
+....................  
+.................... #byte portb=0x06 
+.................... #byte portd=0x08 
+.................... #bit led=portb.0 
+.................... #bit led1=portd.0 
+....................  
+.................... //#zero_ram 
+....................  
+.................... main(){ 
+0019:  CLRF   04
+001A:  BCF    03.7
+001B:  MOVLW  1F
+001C:  ANDWF  03,F
+001D:  BSF    03.5
+001E:  BSF    1F.0
+001F:  BSF    1F.1
+0020:  BSF    1F.2
+0021:  BCF    1F.3
+0022:  MOVLW  07
+0023:  MOVWF  1C
+.................... 	set_tris_b(0b11111110); 
+0024:  MOVLW  FE
+0025:  MOVWF  06
+.................... 	set_tris_d(0b11111110); 
+0026:  MOVWF  08
+.................... 	int8 cont = 0; 
+.................... 	int8 cont1 = 0; 
+0027:  BCF    03.5
+0028:  CLRF   21
+0029:  CLRF   22
+.................... 	while(cont1<3){ 
+002A:  MOVF   22,W
+002B:  SUBLW  02
+002C:  BTFSS  03.0
+002D:  GOTO   060
+.................... 		led = 0; 
+002E:  BCF    06.0
+.................... 		led1= 0; 
+002F:  BCF    08.0
+.................... 		while(cont<=1){ 
+0030:  MOVF   21,W
+0031:  SUBLW  01
+0032:  BTFSS  03.0
+0033:  GOTO   046
+.................... 			led=1; 
+0034:  BSF    06.0
+.................... 			delay_ms(500); 
+0035:  MOVLW  02
+0036:  MOVWF  23
+0037:  MOVLW  FA
+0038:  MOVWF  24
+0039:  CALL   004
+003A:  DECFSZ 23,F
+003B:  GOTO   037
+.................... 			led= 0 ; 
+003C:  BCF    06.0
+.................... 			delay_ms(500); 
+003D:  MOVLW  02
+003E:  MOVWF  23
+003F:  MOVLW  FA
+0040:  MOVWF  24
+0041:  CALL   004
+0042:  DECFSZ 23,F
+0043:  GOTO   03F
+.................... 			cont++; 
+0044:  INCF   21,F
+.................... 		} 
+0045:  GOTO   030
+.................... 		cont=0; 
+0046:  CLRF   21
+.................... 		while(cont<=2){ 
+0047:  MOVF   21,W
+0048:  SUBLW  02
+0049:  BTFSS  03.0
+004A:  GOTO   05D
+.................... 			led1=1; 
+004B:  BSF    08.0
+.................... 			delay_ms(500); 
+004C:  MOVLW  02
+004D:  MOVWF  23
+004E:  MOVLW  FA
+004F:  MOVWF  24
+0050:  CALL   004
+0051:  DECFSZ 23,F
+0052:  GOTO   04E
+.................... 			led1= 0 ; 
+0053:  BCF    08.0
+.................... 			delay_ms(500); 
+0054:  MOVLW  02
+0055:  MOVWF  23
+0056:  MOVLW  FA
+0057:  MOVWF  24
+0058:  CALL   004
+0059:  DECFSZ 23,F
+005A:  GOTO   056
+.................... 			cont++; 
+005B:  INCF   21,F
+.................... 		} 
+005C:  GOTO   047
+.................... 		cont=0; 
+005D:  CLRF   21
+.................... 		cont1++; 
+005E:  INCF   22,F
+.................... 	} 
+005F:  GOTO   02A
+....................  
+.................... } 
+0060:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F71   XT NOWDT PUT NODEBUG NOPROTECT BROWNOUT NOLVP NOCPD NOWRT

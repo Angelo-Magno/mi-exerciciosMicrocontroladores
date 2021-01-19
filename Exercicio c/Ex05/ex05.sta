@@ -1,0 +1,42 @@
+
+ROM used: 28 (1%)
+          28 (1%) including unused fragments
+
+          0 Average locations per line
+          2 Average locations per statement
+
+RAM used: 7 (3%) at main() level
+          7 (3%) worst case
+
+Stack used: 0 worst case (out of 7 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   27    14 100  ex05.c
+  222     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\devices\16f628a.h
+----- -----
+  249    14 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     24  86   2   258  3.7  main
+
+Program metrics:
+    Functions               1
+    Statements              14
+    Comments                63
+    Volume (V)              258
+    Difficilty (D)          3.7
+    Effort to implement (E) 941
+    Time to implement (T)   1 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   2
+    Maintainability (MI)    86
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-007FF    24  2020  
+
+
+

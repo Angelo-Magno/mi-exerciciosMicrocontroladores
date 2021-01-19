@@ -1,0 +1,106 @@
+CCS PCM C Compiler, Version 4.104, 5967               08-nov-17 20:19
+
+               Filename: C:\Users\aluno\Desktop\Microcontroladores\Exercicio c\Ex16\ex16.lst
+
+               ROM used: 58 words (3%)
+                         Largest free fragment is 1990
+               RAM used: 6 (3%) at main() level
+                         7 (3%) worst case
+               Stack:    1 locations
+
+*
+0000:  NOP
+0001:  MOVLW  00
+0002:  MOVWF  0A
+0003:  GOTO   019
+.................... #include <16f628a.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+.................... #list 
+....................  
+.................... #use delay (crystal = 4MHz) 
+0004:  MOVLW  22
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  4A
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  GOTO   032 (RETURN)
+.................... #fuses xt, nowdt 
+.................... #byte porta = 0x05 
+.................... #byte portb = 0x06 
+.................... #bit s1 = porta.0 
+.................... #bit s2 = porta.1 
+.................... #bit s3 = porta.2 
+.................... #bit b1 = portb.0 
+.................... #bit b2 = portb.1 
+.................... #bit v1 = portb.2 
+....................  
+....................  
+.................... main(){ 
+0019:  CLRF   04
+001A:  BCF    03.7
+001B:  MOVLW  1F
+001C:  ANDWF  03,F
+001D:  MOVLW  07
+001E:  MOVWF  1F
+.................... 	set_tris_a(0b00000000); 
+001F:  MOVLW  00
+0020:  TRIS   5
+.................... 	set_tris_b(0b00000000); 
+0021:  TRIS   6
+....................  
+.................... 	b1=0;b2=0;v1=0; 
+0022:  BCF    06.0
+0023:  BCF    06.1
+0024:  BCF    06.2
+.................... 	while(1){ 
+.................... 		b1 = 1; 
+0025:  BSF    06.0
+.................... 		while(s1==0); 
+0026:  BTFSS  05.0
+0027:  GOTO   026
+.................... 		b1 = 0; b2 = 1; 
+0028:  BCF    06.0
+0029:  BSF    06.1
+.................... 		while(s2==0); 
+002A:  BTFSS  05.1
+002B:  GOTO   02A
+.................... 		b2 = 0; 
+002C:  BCF    06.1
+.................... 		delay_ms(600); 
+002D:  MOVLW  03
+002E:  MOVWF  21
+002F:  MOVLW  C8
+0030:  MOVWF  22
+0031:  GOTO   004
+0032:  DECFSZ 21,F
+0033:  GOTO   02F
+.................... 		v1 = 1; 
+0034:  BSF    06.2
+.................... 		while(s3==1); 
+0035:  BTFSC  05.2
+0036:  GOTO   035
+.................... 		v1 = 0; 
+0037:  BCF    06.2
+.................... 	} 
+0038:  GOTO   025
+.................... } 
+0039:  GOTO   039
+
+Configuration Fuses:
+   Word  1: 3F09   XT NOWDT NOPUT NOPROTECT NOBROWNOUT NOMCLR NOLVP NOCPD

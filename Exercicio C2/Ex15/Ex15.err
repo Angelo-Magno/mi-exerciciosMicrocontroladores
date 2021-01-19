@@ -1,0 +1,5 @@
+>>> Warning 203 "Ex15.c" Line 31(1,1): Condition always TRUE
+>>> Warning 208 "Ex15.c" Line 17(1,5): Function not void and does not return a value  main
+>>> Warning 202 "Ex15.c" Line 27(9,13): Variable never used:   nove
+      Memory usage:   ROM=3%      RAM=4% - 4%
+      0 Errors,  3 Warnings.

@@ -1,0 +1,721 @@
+CCS PCM C Compiler, Version 4.104, 5967               18-out-17 21:17
+
+               Filename: C:\Users\aluno\Desktop\Microcontroladores\Exercicio c\Ex03\03.lst
+
+               ROM used: 518 words (25%)
+                         Largest free fragment is 1530
+               RAM used: 16 (7%) at main() level
+                         17 (8%) worst case
+               Stack:    1 locations
+
+*
+0000:  NOP
+0001:  MOVLW  00
+0002:  MOVWF  0A
+0003:  GOTO   019
+.................... #include <16f628a.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+.................... #list 
+....................  
+.................... #use delay (crystal = 4Mhz)//Definição de frequência do cristal 
+0004:  MOVLW  2C
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  4A
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETURN
+....................  
+.................... #fuses xt, nowdt, NOPROTECT, nobrownout, put//Fusebits 
+.................... #byte PORTB = 0x06 //Acessa o endreço 06h do portb 
+.................... #byte PORTA = 0x05 
+.................... #bit LED = PORTB.0  //Acessa o pino B0 
+.................... #bit LED1 = PORTB.1  
+.................... #bit LED2 = PORTB.2 
+.................... #bit LED3 = PORTB.3 
+.................... #bit LED4 = PORTB.4 
+.................... #bit LED5 = PORTB.5 
+.................... #bit LED6 = PORTB.6 
+.................... #bit LED7 = PORTB.7 
+.................... main(){ 
+0019:  CLRF   04
+001A:  BCF    03.7
+001B:  MOVLW  1F
+001C:  ANDWF  03,F
+001D:  MOVLW  07
+001E:  MOVWF  1F
+001F:  MOVLW  BF
+0020:  MOVWF  21
+0021:  MOVLW  06
+0022:  MOVWF  22
+0023:  MOVLW  5B
+0024:  MOVWF  23
+0025:  MOVLW  4F
+0026:  MOVWF  24
+0027:  MOVLW  66
+0028:  MOVWF  25
+0029:  MOVLW  6D
+002A:  MOVWF  26
+002B:  MOVLW  7D
+002C:  MOVWF  27
+002D:  MOVLW  07
+002E:  MOVWF  28
+002F:  MOVLW  FF
+0030:  MOVWF  29
+0031:  MOVLW  6F
+0032:  MOVWF  2A
+....................  
+.................... 		 
+.................... int zero = 0B10111111; 
+.................... int	um = 0B00000110; 
+.................... int	dois = 0B01011011; 
+.................... int	tres = 0B01001111; 
+.................... int	quatro = 0B01100110; 
+.................... int	cinco = 0B01101101; 
+.................... int	seis = 0B01111101; 
+.................... int	sete = 0B00000111; 
+.................... int	oito = 0B11111111; 
+.................... int	nove = 0B01101111; 
+.................... 		set_tris_b(0b00000000); 
+0033:  MOVLW  00
+0034:  TRIS   6
+.................... 		set_tris_a(0b00000000); 
+0035:  TRIS   5
+.................... 	 
+.................... 	while(1){ 
+.................... 		PORTB = zero;//0 
+0036:  MOVF   21,W
+0037:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+0038:  MOVLW  01
+0039:  MOVWF  05
+.................... 		delay_ms(500); 
+003A:  MOVLW  02
+003B:  MOVWF  2B
+003C:  MOVLW  FA
+003D:  MOVWF  2C
+003E:  CALL   004
+003F:  DECFSZ 2B,F
+0040:  GOTO   03C
+.................... 		PORTA = 0B00000010; 
+0041:  MOVLW  02
+0042:  MOVWF  05
+.................... 		PORTB = zero; 
+0043:  MOVF   21,W
+0044:  MOVWF  06
+.................... 		delay_ms(500); 
+0045:  MOVLW  02
+0046:  MOVWF  2B
+0047:  MOVLW  FA
+0048:  MOVWF  2C
+0049:  CALL   004
+004A:  DECFSZ 2B,F
+004B:  GOTO   047
+.................... 		//primeiro numero	 
+....................  
+.................... 		PORTB = um;//1 
+004C:  MOVF   22,W
+004D:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+004E:  MOVLW  01
+004F:  MOVWF  05
+.................... 		delay_ms(500); 
+0050:  MOVLW  02
+0051:  MOVWF  2B
+0052:  MOVLW  FA
+0053:  MOVWF  2C
+0054:  CALL   004
+0055:  DECFSZ 2B,F
+0056:  GOTO   052
+.................... 		PORTA = 0B00000010; 
+0057:  MOVLW  02
+0058:  MOVWF  05
+.................... 		PORTB = zero; 
+0059:  MOVF   21,W
+005A:  MOVWF  06
+.................... 		delay_ms(500); 
+005B:  MOVLW  02
+005C:  MOVWF  2B
+005D:  MOVLW  FA
+005E:  MOVWF  2C
+005F:  CALL   004
+0060:  DECFSZ 2B,F
+0061:  GOTO   05D
+.................... 		//segundo numero 
+....................  
+.................... 		PORTB = dois;//2 
+0062:  MOVF   23,W
+0063:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+0064:  MOVLW  01
+0065:  MOVWF  05
+.................... 		delay_ms(500); 
+0066:  MOVLW  02
+0067:  MOVWF  2B
+0068:  MOVLW  FA
+0069:  MOVWF  2C
+006A:  CALL   004
+006B:  DECFSZ 2B,F
+006C:  GOTO   068
+.................... 		PORTA = 0B00000010; 
+006D:  MOVLW  02
+006E:  MOVWF  05
+.................... 		PORTB = zero; 
+006F:  MOVF   21,W
+0070:  MOVWF  06
+.................... 		delay_ms(500); 
+0071:  MOVLW  02
+0072:  MOVWF  2B
+0073:  MOVLW  FA
+0074:  MOVWF  2C
+0075:  CALL   004
+0076:  DECFSZ 2B,F
+0077:  GOTO   073
+....................  
+.................... 		PORTB = tres;//3 
+0078:  MOVF   24,W
+0079:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+007A:  MOVLW  01
+007B:  MOVWF  05
+.................... 		delay_ms(500); 
+007C:  MOVLW  02
+007D:  MOVWF  2B
+007E:  MOVLW  FA
+007F:  MOVWF  2C
+0080:  CALL   004
+0081:  DECFSZ 2B,F
+0082:  GOTO   07E
+.................... 		PORTA = 0B00000010; 
+0083:  MOVLW  02
+0084:  MOVWF  05
+.................... 		PORTB = zero; 
+0085:  MOVF   21,W
+0086:  MOVWF  06
+.................... 		delay_ms(500); 
+0087:  MOVLW  02
+0088:  MOVWF  2B
+0089:  MOVLW  FA
+008A:  MOVWF  2C
+008B:  CALL   004
+008C:  DECFSZ 2B,F
+008D:  GOTO   089
+....................  
+.................... 		PORTB = quatro;//4 
+008E:  MOVF   25,W
+008F:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+0090:  MOVLW  01
+0091:  MOVWF  05
+.................... 		delay_ms(500); 
+0092:  MOVLW  02
+0093:  MOVWF  2B
+0094:  MOVLW  FA
+0095:  MOVWF  2C
+0096:  CALL   004
+0097:  DECFSZ 2B,F
+0098:  GOTO   094
+.................... 		PORTA = 0B00000010; 
+0099:  MOVLW  02
+009A:  MOVWF  05
+.................... 		PORTB = zero; 
+009B:  MOVF   21,W
+009C:  MOVWF  06
+.................... 		delay_ms(500); 
+009D:  MOVLW  02
+009E:  MOVWF  2B
+009F:  MOVLW  FA
+00A0:  MOVWF  2C
+00A1:  CALL   004
+00A2:  DECFSZ 2B,F
+00A3:  GOTO   09F
+....................  
+.................... 		PORTB = cinco;//5 
+00A4:  MOVF   26,W
+00A5:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+00A6:  MOVLW  01
+00A7:  MOVWF  05
+.................... 		delay_ms(500); 
+00A8:  MOVLW  02
+00A9:  MOVWF  2B
+00AA:  MOVLW  FA
+00AB:  MOVWF  2C
+00AC:  CALL   004
+00AD:  DECFSZ 2B,F
+00AE:  GOTO   0AA
+.................... 		PORTA = 0B00000010; 
+00AF:  MOVLW  02
+00B0:  MOVWF  05
+.................... 		PORTB = zero; 
+00B1:  MOVF   21,W
+00B2:  MOVWF  06
+.................... 		delay_ms(500); 
+00B3:  MOVLW  02
+00B4:  MOVWF  2B
+00B5:  MOVLW  FA
+00B6:  MOVWF  2C
+00B7:  CALL   004
+00B8:  DECFSZ 2B,F
+00B9:  GOTO   0B5
+....................  
+.................... 		PORTB = seis;//6 
+00BA:  MOVF   27,W
+00BB:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+00BC:  MOVLW  01
+00BD:  MOVWF  05
+.................... 		delay_ms(500); 
+00BE:  MOVLW  02
+00BF:  MOVWF  2B
+00C0:  MOVLW  FA
+00C1:  MOVWF  2C
+00C2:  CALL   004
+00C3:  DECFSZ 2B,F
+00C4:  GOTO   0C0
+.................... 		PORTA = 0B00000010; 
+00C5:  MOVLW  02
+00C6:  MOVWF  05
+.................... 		PORTB = zero; 
+00C7:  MOVF   21,W
+00C8:  MOVWF  06
+.................... 		delay_ms(500); 
+00C9:  MOVLW  02
+00CA:  MOVWF  2B
+00CB:  MOVLW  FA
+00CC:  MOVWF  2C
+00CD:  CALL   004
+00CE:  DECFSZ 2B,F
+00CF:  GOTO   0CB
+....................  
+.................... 		PORTB = sete;//7 
+00D0:  MOVF   28,W
+00D1:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+00D2:  MOVLW  01
+00D3:  MOVWF  05
+.................... 		delay_ms(500); 
+00D4:  MOVLW  02
+00D5:  MOVWF  2B
+00D6:  MOVLW  FA
+00D7:  MOVWF  2C
+00D8:  CALL   004
+00D9:  DECFSZ 2B,F
+00DA:  GOTO   0D6
+.................... 		PORTA = 0B00000010; 
+00DB:  MOVLW  02
+00DC:  MOVWF  05
+.................... 		PORTB = zero; 
+00DD:  MOVF   21,W
+00DE:  MOVWF  06
+.................... 		delay_ms(500); 
+00DF:  MOVLW  02
+00E0:  MOVWF  2B
+00E1:  MOVLW  FA
+00E2:  MOVWF  2C
+00E3:  CALL   004
+00E4:  DECFSZ 2B,F
+00E5:  GOTO   0E1
+....................  
+.................... 		PORTB = oito;//8 
+00E6:  MOVF   29,W
+00E7:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+00E8:  MOVLW  01
+00E9:  MOVWF  05
+.................... 		delay_ms(500); 
+00EA:  MOVLW  02
+00EB:  MOVWF  2B
+00EC:  MOVLW  FA
+00ED:  MOVWF  2C
+00EE:  CALL   004
+00EF:  DECFSZ 2B,F
+00F0:  GOTO   0EC
+.................... 		PORTA = 0B00000010; 
+00F1:  MOVLW  02
+00F2:  MOVWF  05
+.................... 		PORTB = zero; 
+00F3:  MOVF   21,W
+00F4:  MOVWF  06
+.................... 		delay_ms(500); 
+00F5:  MOVLW  02
+00F6:  MOVWF  2B
+00F7:  MOVLW  FA
+00F8:  MOVWF  2C
+00F9:  CALL   004
+00FA:  DECFSZ 2B,F
+00FB:  GOTO   0F7
+.................... 		 
+.................... 	 	PORTB = nove;//9 
+00FC:  MOVF   2A,W
+00FD:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+00FE:  MOVLW  01
+00FF:  MOVWF  05
+.................... 		delay_ms(500); 
+0100:  MOVLW  02
+0101:  MOVWF  2B
+0102:  MOVLW  FA
+0103:  MOVWF  2C
+0104:  CALL   004
+0105:  DECFSZ 2B,F
+0106:  GOTO   102
+.................... 		PORTA = 0B00000010; 
+0107:  MOVLW  02
+0108:  MOVWF  05
+.................... 		PORTB = zero; 
+0109:  MOVF   21,W
+010A:  MOVWF  06
+.................... 		delay_ms(500); 
+010B:  MOVLW  02
+010C:  MOVWF  2B
+010D:  MOVLW  FA
+010E:  MOVWF  2C
+010F:  CALL   004
+0110:  DECFSZ 2B,F
+0111:  GOTO   10D
+....................  
+.................... 	 	PORTB = zero;//10 
+0112:  MOVF   21,W
+0113:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+0114:  MOVLW  01
+0115:  MOVWF  05
+.................... 		delay_ms(500); 
+0116:  MOVLW  02
+0117:  MOVWF  2B
+0118:  MOVLW  FA
+0119:  MOVWF  2C
+011A:  CALL   004
+011B:  DECFSZ 2B,F
+011C:  GOTO   118
+.................... 		PORTA = 0B00000010; 
+011D:  MOVLW  02
+011E:  MOVWF  05
+.................... 		PORTB = um; 
+011F:  MOVF   22,W
+0120:  MOVWF  06
+.................... 		delay_ms(500); 
+0121:  MOVLW  02
+0122:  MOVWF  2B
+0123:  MOVLW  FA
+0124:  MOVWF  2C
+0125:  CALL   004
+0126:  DECFSZ 2B,F
+0127:  GOTO   123
+....................  
+.................... 	 	PORTB = um;//11 
+0128:  MOVF   22,W
+0129:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+012A:  MOVLW  01
+012B:  MOVWF  05
+.................... 		delay_ms(500); 
+012C:  MOVLW  02
+012D:  MOVWF  2B
+012E:  MOVLW  FA
+012F:  MOVWF  2C
+0130:  CALL   004
+0131:  DECFSZ 2B,F
+0132:  GOTO   12E
+.................... 		PORTA = 0B00000010; 
+0133:  MOVLW  02
+0134:  MOVWF  05
+.................... 		PORTB = um; 
+0135:  MOVF   22,W
+0136:  MOVWF  06
+.................... 		delay_ms(500); 
+0137:  MOVLW  02
+0138:  MOVWF  2B
+0139:  MOVLW  FA
+013A:  MOVWF  2C
+013B:  CALL   004
+013C:  DECFSZ 2B,F
+013D:  GOTO   139
+....................  
+.................... 	 	PORTB = dois;//12 
+013E:  MOVF   23,W
+013F:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+0140:  MOVLW  01
+0141:  MOVWF  05
+.................... 		delay_ms(500); 
+0142:  MOVLW  02
+0143:  MOVWF  2B
+0144:  MOVLW  FA
+0145:  MOVWF  2C
+0146:  CALL   004
+0147:  DECFSZ 2B,F
+0148:  GOTO   144
+.................... 		PORTA = 0B00000010; 
+0149:  MOVLW  02
+014A:  MOVWF  05
+.................... 		PORTB = um; 
+014B:  MOVF   22,W
+014C:  MOVWF  06
+.................... 		delay_ms(500); 
+014D:  MOVLW  02
+014E:  MOVWF  2B
+014F:  MOVLW  FA
+0150:  MOVWF  2C
+0151:  CALL   004
+0152:  DECFSZ 2B,F
+0153:  GOTO   14F
+....................  
+.................... 	 	PORTB = tres;//13 
+0154:  MOVF   24,W
+0155:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+0156:  MOVLW  01
+0157:  MOVWF  05
+.................... 		delay_ms(500); 
+0158:  MOVLW  02
+0159:  MOVWF  2B
+015A:  MOVLW  FA
+015B:  MOVWF  2C
+015C:  CALL   004
+015D:  DECFSZ 2B,F
+015E:  GOTO   15A
+.................... 		PORTA = 0B00000010; 
+015F:  MOVLW  02
+0160:  MOVWF  05
+.................... 		PORTB = um; 
+0161:  MOVF   22,W
+0162:  MOVWF  06
+.................... 		delay_ms(500); 
+0163:  MOVLW  02
+0164:  MOVWF  2B
+0165:  MOVLW  FA
+0166:  MOVWF  2C
+0167:  CALL   004
+0168:  DECFSZ 2B,F
+0169:  GOTO   165
+....................  
+.................... 	 	PORTB = quatro;//14 
+016A:  MOVF   25,W
+016B:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+016C:  MOVLW  01
+016D:  MOVWF  05
+.................... 		delay_ms(500); 
+016E:  MOVLW  02
+016F:  MOVWF  2B
+0170:  MOVLW  FA
+0171:  MOVWF  2C
+0172:  CALL   004
+0173:  DECFSZ 2B,F
+0174:  GOTO   170
+.................... 		PORTA = 0B00000010; 
+0175:  MOVLW  02
+0176:  MOVWF  05
+.................... 		PORTB = um; 
+0177:  MOVF   22,W
+0178:  MOVWF  06
+.................... 		delay_ms(500); 
+0179:  MOVLW  02
+017A:  MOVWF  2B
+017B:  MOVLW  FA
+017C:  MOVWF  2C
+017D:  CALL   004
+017E:  DECFSZ 2B,F
+017F:  GOTO   17B
+....................  
+.................... 	 	PORTB = cinco;//15 
+0180:  MOVF   26,W
+0181:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+0182:  MOVLW  01
+0183:  MOVWF  05
+.................... 		delay_ms(500); 
+0184:  MOVLW  02
+0185:  MOVWF  2B
+0186:  MOVLW  FA
+0187:  MOVWF  2C
+0188:  CALL   004
+0189:  DECFSZ 2B,F
+018A:  GOTO   186
+.................... 		PORTA = 0B00000010; 
+018B:  MOVLW  02
+018C:  MOVWF  05
+.................... 		PORTB = um; 
+018D:  MOVF   22,W
+018E:  MOVWF  06
+.................... 		delay_ms(500); 
+018F:  MOVLW  02
+0190:  MOVWF  2B
+0191:  MOVLW  FA
+0192:  MOVWF  2C
+0193:  CALL   004
+0194:  DECFSZ 2B,F
+0195:  GOTO   191
+....................  
+.................... 	 	PORTB = seis;//16 
+0196:  MOVF   27,W
+0197:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+0198:  MOVLW  01
+0199:  MOVWF  05
+.................... 		delay_ms(500); 
+019A:  MOVLW  02
+019B:  MOVWF  2B
+019C:  MOVLW  FA
+019D:  MOVWF  2C
+019E:  CALL   004
+019F:  DECFSZ 2B,F
+01A0:  GOTO   19C
+.................... 		PORTA = 0B00000010; 
+01A1:  MOVLW  02
+01A2:  MOVWF  05
+.................... 		PORTB = um; 
+01A3:  MOVF   22,W
+01A4:  MOVWF  06
+.................... 		delay_ms(500); 
+01A5:  MOVLW  02
+01A6:  MOVWF  2B
+01A7:  MOVLW  FA
+01A8:  MOVWF  2C
+01A9:  CALL   004
+01AA:  DECFSZ 2B,F
+01AB:  GOTO   1A7
+....................  
+.................... 	 	PORTB = sete;//17 
+01AC:  MOVF   28,W
+01AD:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+01AE:  MOVLW  01
+01AF:  MOVWF  05
+.................... 		delay_ms(500); 
+01B0:  MOVLW  02
+01B1:  MOVWF  2B
+01B2:  MOVLW  FA
+01B3:  MOVWF  2C
+01B4:  CALL   004
+01B5:  DECFSZ 2B,F
+01B6:  GOTO   1B2
+.................... 		PORTA = 0B00000010; 
+01B7:  MOVLW  02
+01B8:  MOVWF  05
+.................... 		PORTB = um; 
+01B9:  MOVF   22,W
+01BA:  MOVWF  06
+.................... 		delay_ms(500); 
+01BB:  MOVLW  02
+01BC:  MOVWF  2B
+01BD:  MOVLW  FA
+01BE:  MOVWF  2C
+01BF:  CALL   004
+01C0:  DECFSZ 2B,F
+01C1:  GOTO   1BD
+....................  
+.................... 	 	PORTB = oito;//18 
+01C2:  MOVF   29,W
+01C3:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+01C4:  MOVLW  01
+01C5:  MOVWF  05
+.................... 		delay_ms(500); 
+01C6:  MOVLW  02
+01C7:  MOVWF  2B
+01C8:  MOVLW  FA
+01C9:  MOVWF  2C
+01CA:  CALL   004
+01CB:  DECFSZ 2B,F
+01CC:  GOTO   1C8
+.................... 		PORTA = 0B00000010; 
+01CD:  MOVLW  02
+01CE:  MOVWF  05
+.................... 		PORTB = um; 
+01CF:  MOVF   22,W
+01D0:  MOVWF  06
+.................... 		delay_ms(500); 
+01D1:  MOVLW  02
+01D2:  MOVWF  2B
+01D3:  MOVLW  FA
+01D4:  MOVWF  2C
+01D5:  CALL   004
+01D6:  DECFSZ 2B,F
+01D7:  GOTO   1D3
+....................  
+.................... 	 	PORTB = nove;//19 
+01D8:  MOVF   2A,W
+01D9:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+01DA:  MOVLW  01
+01DB:  MOVWF  05
+.................... 		delay_ms(500); 
+01DC:  MOVLW  02
+01DD:  MOVWF  2B
+01DE:  MOVLW  FA
+01DF:  MOVWF  2C
+01E0:  CALL   004
+01E1:  DECFSZ 2B,F
+01E2:  GOTO   1DE
+.................... 		PORTA = 0B00000010; 
+01E3:  MOVLW  02
+01E4:  MOVWF  05
+.................... 		PORTB = um; 
+01E5:  MOVF   22,W
+01E6:  MOVWF  06
+.................... 		delay_ms(500); 
+01E7:  MOVLW  02
+01E8:  MOVWF  2B
+01E9:  MOVLW  FA
+01EA:  MOVWF  2C
+01EB:  CALL   004
+01EC:  DECFSZ 2B,F
+01ED:  GOTO   1E9
+....................  
+.................... 	 	PORTB = zero;//20 
+01EE:  MOVF   21,W
+01EF:  MOVWF  06
+.................... 		PORTA = 0B00000001; 
+01F0:  MOVLW  01
+01F1:  MOVWF  05
+.................... 		delay_ms(500); 
+01F2:  MOVLW  02
+01F3:  MOVWF  2B
+01F4:  MOVLW  FA
+01F5:  MOVWF  2C
+01F6:  CALL   004
+01F7:  DECFSZ 2B,F
+01F8:  GOTO   1F4
+.................... 		PORTA = 0B00000010; 
+01F9:  MOVLW  02
+01FA:  MOVWF  05
+.................... 		PORTB = dois; 
+01FB:  MOVF   23,W
+01FC:  MOVWF  06
+.................... 		delay_ms(500); 
+01FD:  MOVLW  02
+01FE:  MOVWF  2B
+01FF:  MOVLW  FA
+0200:  MOVWF  2C
+0201:  CALL   004
+0202:  DECFSZ 2B,F
+0203:  GOTO   1FF
+.................... 		 
+....................  
+.................... 	}	 
+0204:  GOTO   036
+....................  
+....................  
+.................... } 
+0205:  GOTO   205
+
+Configuration Fuses:
+   Word  1: 3F09   XT NOWDT NOPUT NOPROTECT NOBROWNOUT NOMCLR NOLVP NOCPD

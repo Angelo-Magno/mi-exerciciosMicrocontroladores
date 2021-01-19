@@ -1,0 +1,188 @@
+CCS PCM C Compiler, Version 4.104, 5967               29-nov-17 12:17
+
+               Filename: C:\Users\Estudo\Desktop\6 Periodo\Microcontroladores\Part 2\Exercicio C2\Ex16\Ex16.lst
+
+               ROM used: 130 words (2%)
+                         Largest free fragment is 2048
+               RAM used: 7 (2%) at main() level
+                         8 (2%) worst case
+               Stack:    1 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   01B
+0003:  NOP
+.................... #include <16f877a.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #use delay(crystal = 4MHz) 
+*
+0004:  MOVLW  22
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  4A
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  BCF    0A.3
+0019:  BCF    0A.4
+001A:  GOTO   078 (RETURN)
+.................... #fuses xt, nowdt 
+.................... #byte portc= 0x07 
+.................... #byte portd= 0x08 
+....................  
+.................... #bit s1 = portc.0  
+.................... #bit s2 = portc.1 
+.................... #bit s3 = portc.2 
+....................  
+.................... #bit b1 = portd.0  
+.................... #bit b2 = portd.1 
+.................... #bit m = portd.2 
+.................... #bit v1 = portd.3 
+.................... #zero_ram 
+....................  
+.................... main(){ 
+001B:  MOVF   03,W
+001C:  ANDLW  1F
+001D:  MOVWF  03
+001E:  MOVLW  57
+001F:  MOVWF  77
+0020:  MOVLW  20
+0021:  MOVWF  04
+0022:  BCF    03.7
+0023:  CLRF   00
+0024:  INCF   04,F
+0025:  DECFSZ 77,F
+0026:  GOTO   023
+0027:  CLRF   78
+0028:  CLRF   79
+0029:  CLRF   7A
+002A:  CLRF   7B
+002B:  CLRF   7C
+002C:  CLRF   7D
+002D:  CLRF   7E
+002E:  MOVLW  50
+002F:  MOVWF  77
+0030:  MOVLW  A0
+0031:  MOVWF  04
+0032:  BCF    03.7
+0033:  CLRF   00
+0034:  INCF   04,F
+0035:  DECFSZ 77,F
+0036:  GOTO   033
+0037:  MOVLW  60
+0038:  MOVWF  77
+0039:  MOVLW  10
+003A:  MOVWF  04
+003B:  BSF    03.7
+003C:  CLRF   00
+003D:  INCF   04,F
+003E:  DECFSZ 77,F
+003F:  GOTO   03C
+0040:  BCF    03.7
+0041:  MOVLW  60
+0042:  MOVWF  77
+0043:  MOVLW  90
+0044:  MOVWF  04
+0045:  BSF    03.7
+0046:  CLRF   00
+0047:  INCF   04,F
+0048:  DECFSZ 77,F
+0049:  GOTO   046
+004A:  BCF    03.7
+004B:  CLRF   20
+004C:  CLRF   04
+004D:  BCF    03.7
+004E:  MOVLW  1F
+004F:  ANDWF  03,F
+0050:  BSF    03.5
+0051:  BSF    1F.0
+0052:  BSF    1F.1
+0053:  BSF    1F.2
+0054:  BCF    1F.3
+0055:  MOVLW  07
+0056:  MOVWF  1C
+.................... 	set_tris_c(0b00000111); 
+*
+005A:  MOVLW  07
+005B:  BSF    03.5
+005C:  MOVWF  07
+005D:  BCF    03.5
+005E:  MOVWF  20
+.................... 	set_tris_d(0b11110000); 
+005F:  MOVLW  F0
+0060:  BSF    03.5
+0061:  MOVWF  08
+.................... 	 
+.................... 	 
+.................... 	while(1){ 
+.................... 		b1=0;b2=0;m=0;v1=0; 
+0062:  BCF    03.5
+0063:  BCF    08.0
+0064:  BCF    08.1
+0065:  BCF    08.2
+0066:  BCF    08.3
+.................... 		b1=1; 
+0067:  BSF    08.0
+.................... 		while(s1==0){ 
+0068:  BTFSC  07.0
+0069:  GOTO   06C
+.................... 			b2=0; 
+006A:  BCF    08.1
+.................... 		} 
+006B:  GOTO   068
+.................... 		while(s2==0){ 
+006C:  BTFSC  07.1
+006D:  GOTO   071
+.................... 			b1=0;b2=1; 
+006E:  BCF    08.0
+006F:  BSF    08.1
+.................... 		} 
+0070:  GOTO   06C
+.................... 		b2=0; 
+0071:  BCF    08.1
+.................... 		m=1; 
+0072:  BSF    08.2
+.................... 		delay_ms(6000); 
+0073:  MOVLW  18
+0074:  MOVWF  21
+0075:  MOVLW  FA
+0076:  MOVWF  22
+0077:  GOTO   004
+0078:  DECFSZ 21,F
+0079:  GOTO   075
+.................... 		m=0; 
+007A:  BCF    08.2
+.................... 		while(s3==0){ 
+007B:  BTFSC  07.2
+007C:  GOTO   07F
+.................... 			v1=1; 
+007D:  BSF    08.3
+.................... 		} 
+007E:  GOTO   07B
+.................... 		v1=0; 
+007F:  BCF    08.3
+.................... 		 
+.................... 	} 
+0080:  GOTO   063
+.................... } 
+0081:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F71   XT NOWDT PUT NODEBUG NOPROTECT BROWNOUT NOLVP NOCPD NOWRT

@@ -1,0 +1,134 @@
+CCS PCM C Compiler, Version 4.104, 5967               29-nov-17 09:38
+
+               Filename: C:\Users\Estudo\Desktop\6 Periodo\Microcontroladores\Part 2\Exercicio C2\Ex13\Ex13.lst
+
+               ROM used: 84 words (4%)
+                         Largest free fragment is 1964
+               RAM used: 6 (3%) at main() level
+                         8 (4%) worst case
+               Stack:    1 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   019
+0003:  NOP
+.................... #include <16f628a.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+.................... #list 
+....................  
+.................... #use delay (crystal = 4 Mhz) 
+0004:  MOVLW  23
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  4A
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETURN
+.................... #fuses xt, nowdt, noprotect, put 
+....................  
+.................... #byte portb=0x06 
+.................... #bit led=portb.0 
+.................... #bit led1=portb.1 
+....................  
+.................... main(){ 
+0019:  CLRF   04
+001A:  BCF    03.7
+001B:  MOVLW  1F
+001C:  ANDWF  03,F
+001D:  MOVLW  07
+001E:  MOVWF  1F
+.................... 	set_tris_b(0b11111100); 
+001F:  MOVLW  FC
+0020:  TRIS   6
+.................... 	int8 cont = 0; 
+0021:  CLRF   21
+.................... 	while(1){ 
+.................... 		led = 0; 
+0022:  BCF    06.0
+.................... 		led1= 0; 
+0023:  BCF    06.1
+.................... 		while(cont<=1){ 
+0024:  MOVF   21,W
+0025:  SUBLW  01
+0026:  BTFSS  03.0
+0027:  GOTO   03A
+.................... 			led=1; 
+0028:  BSF    06.0
+.................... 			delay_ms(500); 
+0029:  MOVLW  02
+002A:  MOVWF  22
+002B:  MOVLW  FA
+002C:  MOVWF  23
+002D:  CALL   004
+002E:  DECFSZ 22,F
+002F:  GOTO   02B
+.................... 			led= 0 ; 
+0030:  BCF    06.0
+.................... 			delay_ms(500); 
+0031:  MOVLW  02
+0032:  MOVWF  22
+0033:  MOVLW  FA
+0034:  MOVWF  23
+0035:  CALL   004
+0036:  DECFSZ 22,F
+0037:  GOTO   033
+.................... 			cont++; 
+0038:  INCF   21,F
+.................... 		} 
+0039:  GOTO   024
+.................... 		cont=0; 
+003A:  CLRF   21
+.................... 		while(cont<=2){ 
+003B:  MOVF   21,W
+003C:  SUBLW  02
+003D:  BTFSS  03.0
+003E:  GOTO   051
+.................... 			led1=1; 
+003F:  BSF    06.1
+.................... 			delay_ms(500); 
+0040:  MOVLW  02
+0041:  MOVWF  22
+0042:  MOVLW  FA
+0043:  MOVWF  23
+0044:  CALL   004
+0045:  DECFSZ 22,F
+0046:  GOTO   042
+.................... 			led1= 0 ; 
+0047:  BCF    06.1
+.................... 			delay_ms(500); 
+0048:  MOVLW  02
+0049:  MOVWF  22
+004A:  MOVLW  FA
+004B:  MOVWF  23
+004C:  CALL   004
+004D:  DECFSZ 22,F
+004E:  GOTO   04A
+.................... 			cont++; 
+004F:  INCF   21,F
+.................... 		} 
+0050:  GOTO   03B
+.................... 		cont=0; 
+0051:  CLRF   21
+.................... 	} 
+0052:  GOTO   022
+.................... } 
+0053:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F61   XT NOWDT PUT NOPROTECT BROWNOUT MCLR NOLVP NOCPD

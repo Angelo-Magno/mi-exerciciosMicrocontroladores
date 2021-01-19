@@ -1,0 +1,58 @@
+CCS PCM C Compiler, Version 4.104, 5967               25-out-17 21:12
+
+               Filename: C:\Users\aluno\Desktop\Microcontroladores\Exercicio c\Ex04\ex03.lst
+
+               ROM used: 22 words (1%)
+                         Largest free fragment is 2026
+               RAM used: 6 (3%) at main() level
+                         6 (3%) worst case
+               Stack:    0 locations
+
+*
+0000:  NOP
+0001:  MOVLW  00
+0002:  MOVWF  0A
+0003:  GOTO   004
+.................... #include <16f628a.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+.................... #list 
+....................  
+.................... #use delay (crystal = 4mhz) 
+.................... #fuses xt, nowdt, noprotect, nobrownout, put 
+.................... #byte portb = 0x06 
+.................... #byte porta = 0x05 
+.................... #bit botao = porta.0 
+.................... #bit led = portb.0 
+.................... main(){ 
+0004:  CLRF   04
+0005:  BCF    03.7
+0006:  MOVLW  1F
+0007:  ANDWF  03,F
+0008:  MOVLW  07
+0009:  MOVWF  1F
+.................... 	set_tris_a(0b00000000); 
+000A:  MOVLW  00
+000B:  TRIS   5
+.................... 	set_tris_b(0b11111110); 
+000C:  MOVLW  FE
+000D:  TRIS   6
+.................... 	while(1){ 
+.................... 		if(botao==1) 
+000E:  BTFSC  05.0
+.................... 			led = 1; 
+000F:  BSF    06.0
+.................... 		while(botao==0) 
+.................... 			led = 0; 
+0010:  BTFSC  05.0
+0011:  GOTO   014
+0012:  BCF    06.0
+0013:  GOTO   010
+.................... 	} 
+0014:  GOTO   00E
+....................  
+.................... } 
+0015:  GOTO   015
+
+Configuration Fuses:
+   Word  1: 3F09   XT NOWDT NOPUT NOPROTECT NOBROWNOUT NOMCLR NOLVP NOCPD

@@ -1,0 +1,158 @@
+CCS PCM C Compiler, Version 4.104, 5967               29-nov-17 18:52
+
+               Filename: C:\Users\Estudo\Desktop\6 Periodo\Microcontroladores\Part 2\Exercicio C2\Ex21\Ex21.lst
+
+               ROM used: 95 words (1%)
+                         Largest free fragment is 2048
+               RAM used: 8 (2%) at main() level
+                         8 (2%) worst case
+               Stack:    1 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   004
+0003:  NOP
+.................... #include <16f877a.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #use delay(crystal = 4MHz) 
+.................... #fuses xt, nowdt 
+....................  
+.................... #byte  portc=0x07 
+.................... #byte  portd=0x08 
+....................  
+.................... #bit botao=portc.0 
+.................... #bit sa=portc.1 
+.................... #bit sb=portc.2 
+.................... #bit sc=portc.3 
+.................... #bit botaop=portc.4 
+....................  
+.................... #bit m2d=portd.0 
+.................... #bit m1h=portd.1 
+.................... #bit m2s=portd.2 
+.................... #bit m1a=portd.3 
+....................  
+.................... main(){ 
+*
+0004:  CLRF   04
+0005:  BCF    03.7
+0006:  MOVLW  1F
+0007:  ANDWF  03,F
+0008:  BSF    03.5
+0009:  BSF    1F.0
+000A:  BSF    1F.1
+000B:  BSF    1F.2
+000C:  BCF    1F.3
+000D:  MOVLW  07
+000E:  MOVWF  1C
+*
+0012:  MOVLW  03
+0013:  MOVWF  21
+.................... 	int8 estado=3; 
+.................... 	m2d=0;m2s=0;m1h=0;m1a=0; 
+0014:  BCF    08.0
+0015:  BCF    08.2
+0016:  BCF    08.1
+0017:  BCF    08.3
+.................... 	 
+.................... 	set_tris_c(0b00001111); 
+0018:  MOVLW  0F
+0019:  BSF    03.5
+001A:  MOVWF  07
+001B:  BCF    03.5
+001C:  MOVWF  20
+.................... 	set_tris_d(0b11110000); 
+001D:  MOVLW  F0
+001E:  BSF    03.5
+001F:  MOVWF  08
+.................... 	while(1){ 
+.................... 		switch(estado){ 
+0020:  BCF    03.5
+0021:  MOVF   21,W
+0022:  ADDLW  FB
+0023:  BTFSC  03.0
+0024:  GOTO   054
+0025:  ADDLW  05
+0026:  GOTO   056
+.................... 			case 3: m2d=0;m2s=0;m1h=0;m1a=0; 
+0027:  BCF    08.0
+0028:  BCF    08.2
+0029:  BCF    08.1
+002A:  BCF    08.3
+.................... 					if(botao==1){estado=0;} 
+002B:  BTFSC  07.0
+002C:  CLRF   21
+.................... 			break; 
+002D:  GOTO   054
+....................  
+.................... 			case 0: if(sa==1){ 
+002E:  BTFSS  07.1
+002F:  GOTO   033
+.................... 						m2d=1; 
+0030:  BSF    08.0
+.................... 						estado=4; 
+0031:  MOVLW  04
+0032:  MOVWF  21
+.................... 					 
+.................... 					} if(sa==0)estado=1; 
+0033:  BTFSC  07.1
+0034:  GOTO   037
+0035:  MOVLW  01
+0036:  MOVWF  21
+.................... 			break;	 
+0037:  GOTO   054
+....................  
+.................... 			case 4 :if(sb==1)m1h=1;  
+0038:  BTFSC  07.2
+0039:  BSF    08.1
+.................... 					if(sc==1)estado=2; 
+003A:  BTFSS  07.3
+003B:  GOTO   03E
+003C:  MOVLW  02
+003D:  MOVWF  21
+.................... 			break; 
+003E:  GOTO   054
+....................  
+.................... 			case 1: m2s=1;  
+003F:  BSF    08.2
+.................... 					if(sa==1){m2s=0;estado=0;} 
+0040:  BTFSS  07.1
+0041:  GOTO   044
+0042:  BCF    08.2
+0043:  CLRF   21
+.................... 			break; 
+0044:  GOTO   054
+....................  
+.................... 			case 2: m2d=0; m1h=0; 
+0045:  BCF    08.0
+0046:  BCF    08.1
+.................... 					while(sb==1){ 
+0047:  BTFSS  07.2
+0048:  GOTO   04C
+.................... 				    	m2s=1; m1a=1; 
+0049:  BSF    08.2
+004A:  BSF    08.3
+.................... 					} 
+004B:  GOTO   047
+.................... 					while(sa==0){m1a=0;}  
+004C:  BTFSC  07.1
+004D:  GOTO   050
+004E:  BCF    08.3
+004F:  GOTO   04C
+.................... 					m2s=0; estado=3; 
+0050:  BCF    08.2
+0051:  MOVLW  03
+0052:  MOVWF  21
+.................... 			break; 
+0053:  GOTO   054
+.................... 		} 
+.................... 	} 
+0054:  GOTO   021
+.................... } 
+0055:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F71   XT NOWDT PUT NODEBUG NOPROTECT BROWNOUT NOLVP NOCPD NOWRT

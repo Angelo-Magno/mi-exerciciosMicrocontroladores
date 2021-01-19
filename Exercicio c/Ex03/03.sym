@@ -1,0 +1,76 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+005     PORTA
+006.0   LED
+006     PORTB
+006.1   LED1
+006.2   LED2
+006.3   LED3
+006.4   LED4
+006.5   LED5
+006.6   LED6
+006.7   LED7
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01F.6   C1OUT
+01F.7   C2OUT
+021     main.zero
+022     main.um
+023     main.dois
+024     main.tres
+025     main.quatro
+026     main.cinco
+027     main.seis
+028     main.sete
+029     main.oito
+02A     main.nove
+02B     main.@SCRATCH1
+02C     @delay_ms1.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09B-09C @READ_PROGRAM_MEMORY8.P1
+
+ROM Allocation:
+0004  @delay_ms1
+0019  main
+0019  @cinit
+
+
+User Memory space: 
+
+User Memory space: 
+
+Project Directory:
+    C:\Users\aluno\Desktop\Microcontroladores\Exercicio c\Ex03\
+
+Project Files:
+    03.c
+    ..\..\..\..\..\..\Program Files (x86)\PICC\devices\16f628a.h
+
+Units:
+    C:\Users\aluno\Desktop\Microcontroladores\Exercicio c\Ex03\03 (main)
+
+Compiler Settings:
+    Processor:      PIC16F628A
+    Pointer Size:   16
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    ICD Provisions: Yes
+    Predefined symbols:
+       #define __DEBUG 1
+       #define __16F628A TRUE
+
+Output Files:
+    Errors:      03.err
+    Ext Symbols: 03.esym
+    INHX8:       03.hex
+    Symbols:     03.sym
+    List:        03.lst
+    Debug/COFF:  03.cof
+    Project:     03.PJT
+    Call Tree:   03.tre
+    Statistics:  03.sta

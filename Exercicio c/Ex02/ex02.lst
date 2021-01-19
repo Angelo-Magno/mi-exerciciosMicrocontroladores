@@ -1,0 +1,184 @@
+CCS PCM C Compiler, Version 4.104, 5967               18-out-17 20:14
+
+               Filename: C:\Users\aluno\Desktop\Microcontroladores\Exercicio c\Ex02\ex02.lst
+
+               ROM used: 125 words (6%)
+                         Largest free fragment is 1923
+               RAM used: 6 (3%) at main() level
+                         7 (3%) worst case
+               Stack:    1 locations
+
+*
+0000:  NOP
+0001:  MOVLW  00
+0002:  MOVWF  0A
+0003:  GOTO   019
+.................... #include <16f628a.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+.................... #list 
+....................  
+.................... #use delay (crystal = 4Mhz)//Definição de frequência do cristal 
+0004:  MOVLW  22
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  4A
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETURN
+....................  
+.................... #fuses xt, nowdt, NOPROTECT, nobrownout, put//Fusebits 
+.................... #byte PORTB = 0x06 //Acessa o endreço 06h do portb 
+.................... #bit LED = PORTB.0  //Acessa o pino B0 
+.................... #bit LED1 = PORTB.1  
+.................... #bit LED2 = PORTB.2 
+.................... #bit LED3 = PORTB.3 
+.................... #bit LED4 = PORTB.4 
+.................... #bit LED5 = PORTB.5 
+.................... #bit LED6 = PORTB.6 
+.................... #bit LED7 = PORTB.7 
+.................... main(){ 
+0019:  CLRF   04
+001A:  BCF    03.7
+001B:  MOVLW  1F
+001C:  ANDWF  03,F
+001D:  MOVLW  07
+001E:  MOVWF  1F
+.................... 	set_tris_b(0b00000000);//0xFE 
+001F:  MOVLW  00
+0020:  TRIS   6
+.................... 	while(1){ 
+.................... 	 	PORTB = 0B01101111; 
+0021:  MOVLW  6F
+0022:  MOVWF  06
+.................... 		delay_ms(500); 
+0023:  MOVLW  02
+0024:  MOVWF  21
+0025:  MOVLW  FA
+0026:  MOVWF  22
+0027:  CALL   004
+0028:  DECFSZ 21,F
+0029:  GOTO   025
+.................... 		PORTB = 0B11111111; 
+002A:  MOVLW  FF
+002B:  MOVWF  06
+.................... 		delay_ms(500); 
+002C:  MOVLW  02
+002D:  MOVWF  21
+002E:  MOVLW  FA
+002F:  MOVWF  22
+0030:  CALL   004
+0031:  DECFSZ 21,F
+0032:  GOTO   02E
+.................... 		PORTB = 0B00000111; 
+0033:  MOVLW  07
+0034:  MOVWF  06
+.................... 		delay_ms(500); 
+0035:  MOVLW  02
+0036:  MOVWF  21
+0037:  MOVLW  FA
+0038:  MOVWF  22
+0039:  CALL   004
+003A:  DECFSZ 21,F
+003B:  GOTO   037
+.................... 		PORTB = 0B01111101; 
+003C:  MOVLW  7D
+003D:  MOVWF  06
+.................... 		delay_ms(500); 
+003E:  MOVLW  02
+003F:  MOVWF  21
+0040:  MOVLW  FA
+0041:  MOVWF  22
+0042:  CALL   004
+0043:  DECFSZ 21,F
+0044:  GOTO   040
+.................... 		PORTB = 0B01101101; 
+0045:  MOVLW  6D
+0046:  MOVWF  06
+.................... 		delay_ms(500); 
+0047:  MOVLW  02
+0048:  MOVWF  21
+0049:  MOVLW  FA
+004A:  MOVWF  22
+004B:  CALL   004
+004C:  DECFSZ 21,F
+004D:  GOTO   049
+.................... 		PORTB = 0B01100110; 
+004E:  MOVLW  66
+004F:  MOVWF  06
+.................... 		delay_ms(500); 
+0050:  MOVLW  02
+0051:  MOVWF  21
+0052:  MOVLW  FA
+0053:  MOVWF  22
+0054:  CALL   004
+0055:  DECFSZ 21,F
+0056:  GOTO   052
+.................... 		PORTB = 0B01001111; 
+0057:  MOVLW  4F
+0058:  MOVWF  06
+.................... 		delay_ms(500); 
+0059:  MOVLW  02
+005A:  MOVWF  21
+005B:  MOVLW  FA
+005C:  MOVWF  22
+005D:  CALL   004
+005E:  DECFSZ 21,F
+005F:  GOTO   05B
+.................... PORTB = 0B01011011; 
+0060:  MOVLW  5B
+0061:  MOVWF  06
+.................... 		delay_ms(500); 
+0062:  MOVLW  02
+0063:  MOVWF  21
+0064:  MOVLW  FA
+0065:  MOVWF  22
+0066:  CALL   004
+0067:  DECFSZ 21,F
+0068:  GOTO   064
+.................... PORTB = 0B00000110; 
+0069:  MOVLW  06
+006A:  MOVWF  06
+.................... 		delay_ms(500); 
+006B:  MOVLW  02
+006C:  MOVWF  21
+006D:  MOVLW  FA
+006E:  MOVWF  22
+006F:  CALL   004
+0070:  DECFSZ 21,F
+0071:  GOTO   06D
+.................... PORTB = 0B10111111; 
+0072:  MOVLW  BF
+0073:  MOVWF  06
+.................... 		delay_ms(500); 
+0074:  MOVLW  02
+0075:  MOVWF  21
+0076:  MOVLW  FA
+0077:  MOVWF  22
+0078:  CALL   004
+0079:  DECFSZ 21,F
+007A:  GOTO   076
+....................  
+.................... 	}	 
+007B:  GOTO   021
+....................  
+....................  
+.................... } 
+007C:  GOTO   07C
+
+Configuration Fuses:
+   Word  1: 3F09   XT NOWDT NOPUT NOPROTECT NOBROWNOUT NOMCLR NOLVP NOCPD
